@@ -17,6 +17,6 @@ import rest.resources.UserResource;
 public class UserController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<UserResource> getSingleUser(@PathVariable Long id) {
-        return new ResponseEntity<UserResource>(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<UserResource>(HttpStatus.OK);
     }
 }
