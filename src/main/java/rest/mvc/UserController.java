@@ -13,7 +13,7 @@ import rest.resources.UserResource;
  */
 
 @Controller
-@RequestMapping("/rest/users")
+@RequestMapping("/users")
 public class UserController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<UserResource> getSingleUser(@PathVariable Long id) {
