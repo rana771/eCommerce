@@ -1,0 +1,22 @@
+{
+  "name": "client",
+  "version": "0.0.0",
+  "homepage": "https://github.com/rana771/eCommerce",
+  "authors": [
+    "Raihan <raihan.dk@gmail.com>",
+    "Ripon Rana",
+    "Abdul Kader"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor",
+    "test",
+    "tests"
+  ]
+}
