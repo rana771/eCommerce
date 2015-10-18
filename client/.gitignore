@@ -1,0 +1,7 @@
+# ignore all except admin.iml file and contents of ngbp folder
+*
+!admin.iml
+!ngbp/
+
+#also do not ignore the .gitignore file
+!.gitignore
