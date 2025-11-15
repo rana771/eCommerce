@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.ecommerce</groupId>
+    <artifactId>ecommerce-platform</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+
+    <name>E-Commerce Platform</name>
+    <description>Multi-Domain E-Commerce Platform - Parent POM</description>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.2.0</version>
+        <relativePath/>
+    </parent>
+
+    <properties>
+        <java.version>17</java.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <spring-cloud.version>2023.0.0</spring-cloud.version>
+        <lombok.version>1.18.30</lombok.version>
+        <mapstruct.version>1.5.5.Final</mapstruct.version>
+        <springdoc.version>2.2.0</springdoc.version>
+        <jjwt.version>0.12.3</jjwt.version>
+        <testcontainers.version>1.19.1</testcontainers.version>
+    </properties>
+
+    <modules>
+        <!-- Shared Libraries -->
+        <module>shared-libraries/common-library</module>
+        <module>shared-libraries/security-library</module>
+        <module>shared-libraries/event-library</module>
+        <module>shared-libraries/client-library</module>
+
+        <!-- Core Business Microservices (25) -->
+        <module>microservices/company-service</module>
+        <module>microservices/product-service</module>
+        <module>microservices/user-service</module>
+        <module>microservices/vendor-service</module>
+        <module>microservices/shopper-service</module>
+        <module>microservices/cart-service</module>
+        <module>microservices/order-service</module>
+        <module>microservices/order-history-service</module>
+        <module>microservices/payment-service</module>
+        <module>microservices/inventory-service</module>
+        <module>microservices/pricing-service</module>
+        <module>microservices/review-service</module>
+        <module>microservices/comment-service</module>
+        <module>microservices/recommendation-service</module>
+        <module>microservices/notification-service</module>
+        <module>microservices/shopper-notification-service</module>
+        <module>microservices/search-service</module>
+        <module>microservices/search-history-service</module>
+        <module>microservices/browsing-history-service</module>
+        <module>microservices/wishlist-service</module>
+        <module>microservices/coupon-service</module>
+        <module>microservices/loyalty-service</module>
+        <module>microservices/order-assignment-service</module>
+        <module>microservices/localization-service</module>
+        <module>microservices/currency-service</module>
+
+        <!-- Domain-Specific Microservices (10) -->
+        <module>microservices/domain-management-service</module>
+        <module>microservices/furniture-service</module>
+        <module>microservices/automobile-service</module>
+        <module>microservices/electronics-service</module>
+        <module>microservices/fashion-service</module>
+        <module>microservices/grocery-service</module>
+        <module>microservices/book-service</module>
+        <module>microservices/sports-service</module>
+        <module>microservices/health-beauty-service</module>
+        <module>microservices/toys-games-service</module>
+
+        <!-- Infrastructure Microservices (12) -->
+        <module>microservices/media-service</module>
+        <module>microservices/cdn-service</module>
+        <module>microservices/storage-service</module>
+        <module>microservices/image-processing-service</module>
+        <module>microservices/backup-service</module>
+        <module>microservices/cache-service</module>
+        <module>microservices/analytics-service</module>
+        <module>microservices/logging-service</module>
+        <module>microservices/monitoring-service</module>
+        <module>microservices/security-service</module>
+        <module>microservices/email-service</module>
+        <module>microservices/sms-service</module>
+
+        <!-- Support & Admin Microservices (11) -->
+        <module>microservices/admin-service</module>
+        <module>microservices/shopper-dashboard-service</module>
+        <module>microservices/customer-service</module>
+        <module>microservices/shipping-service</module>
+        <module>microservices/tax-service</module>
+        <module>microservices/audit-service</module>
+        <module>microservices/configuration-service</module>
+        <module>microservices/reporting-service</module>
+        <module>microservices/communication-service</module>
+        <module>microservices/geolocation-service</module>
+        <module>microservices/api-gateway</module>
+
+        <!-- Infrastructure Services -->
+        <module>infrastructure/eureka-server</module>
+        <module>infrastructure/config-server</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Spring Cloud Dependencies -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Shared Libraries -->
+            <dependency>
+                <groupId>com.ecommerce</groupId>
+                <artifactId>common-library</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ecommerce</groupId>
+                <artifactId>security-library</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ecommerce</groupId>
+                <artifactId>event-library</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ecommerce</groupId>
+                <artifactId>client-library</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- Utilities -->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct</artifactId>
+                <version>${mapstruct.version}</version>
+            </dependency>
+
+            <!-- JWT -->
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-api</artifactId>
+                <version>${jjwt.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-impl</artifactId>
+                <version>${jjwt.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-jackson</artifactId>
+                <version>${jjwt.version}</version>
+            </dependency>
+
+            <!-- Documentation -->
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+                <version>${springdoc.version}</version>
+            </dependency>
+
+            <!-- Testcontainers -->
+            <dependency>
+                <groupId>org.testcontainers</groupId>
+                <artifactId>testcontainers-bom</artifactId>
+                <version>${testcontainers.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <configuration>
+                        <excludes>
+                            <exclude>
+                                <groupId>org.projectlombok</groupId>
+                                <artifactId>lombok</artifactId>
+                            </exclude>
+                        </excludes>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.11.0</version>
+                    <configuration>
+                        <source>17</source>
+                        <target>17</target>
+                        <annotationProcessorPaths>
+                            <path>
+                                <groupId>org.projectlombok</groupId>
+                                <artifactId>lombok</artifactId>
+                                <version>${lombok.version}</version>
+                            </path>
+                            <path>
+                                <groupId>org.mapstruct</groupId>
+                                <artifactId>mapstruct-processor</artifactId>
+                                <version>${mapstruct.version}</version>
+                            </path>
+                        </annotationProcessorPaths>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+</project>
