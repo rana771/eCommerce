@@ -1,0 +1,31 @@
+package com.ecommerce.userservice.dto.request;
+
+import jakarta.validation.constraints.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+/**
+ * Request DTO for changing password
+ */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class ChangePasswordRequest {
+    
+    @NotBlank(message = "Current password is required")
+    private String currentPassword;
+    
+    @NotBlank(message = "New password is required")
+    @Size(min = 8, max = 100, message = "Password must be between 8 and 100 characters")
+    @Pattern(
+        regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$",
+        message = "Password must contain at least one digit, one lowercase, one uppercase, one special character and no whitespace"
+    )
+    private String newPassword;
+    
+    @NotBlank(message = "Confirm password is required")
+    private String confirmPassword;
+}
